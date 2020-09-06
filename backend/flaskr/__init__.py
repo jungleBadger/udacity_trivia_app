@@ -41,7 +41,7 @@ def create_app(test_config=None):
                 {category.id: category.type for category in categories}
         })
 
-    @app.route('/categories/<category_id>/questions', methods=['GET'])
+    @app.route('/categories/<int:category_id>/questions', methods=['GET'])
     def retrieve_questions_by_category(category_id):
         """
         Query questions searching for text fragments within question body
@@ -69,6 +69,7 @@ def create_app(test_config=None):
                 'success': False,
                 'error': "An error occurred"
             }), 500
+
 
     @app.route('/questions', methods=['GET'])
     def retrieve_questions():
